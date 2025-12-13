@@ -1,17 +1,38 @@
-package net.experiment.journalApp.Entity;
+package net.experiment.journalApp.entity;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.time.LocalDateTime;
+import java.util.Date;
+
+@Document(collection="journal_entries")
 public class JournalEntity {
-    private long id;
+    @Id
+
+    private ObjectId id;
     private String title;
     private String description;
+    private Date date;
 
-    public long getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+
 
     public String getTitle() {
         return title;
@@ -27,5 +48,9 @@ public class JournalEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setDate(LocalDateTime now) {
+
     }
 }
